@@ -26,7 +26,7 @@ public class ContatoREST {
         repositorio.save(pessoa);
     }
 
-    @PutMapping
+    @PutMapping(path = "/atualizar")
     //@RequestBody converte os dados em JSON para objeto JAVA
     public void alterar (@RequestBody Pessoa pessoa) {
         if (pessoa.getId() > 0) {
@@ -34,7 +34,7 @@ public class ContatoREST {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/excluir")
     public void excluir (@RequestBody Pessoa pessoa) {
         repositorio.delete(pessoa);
     }
