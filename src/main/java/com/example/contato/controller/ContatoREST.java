@@ -8,24 +8,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pessoa")
+@RequestMapping("/contato")
 public class ContatoREST {
 
     // injeção de dependencia, dessa forma o spring cria o objeto
     @Autowired
     private RepositorioContato repositorio;
 
-    @GetMapping
+    @GetMapping(path = "/consultar")
     public List<Pessoa> listarTodos() {
         return repositorio.findAll();
     }
 
-    @PostMapping
+    @PostMapping(path = "/salvar")
     //@RequestBody converte os dados em JSON para objeto JAVA
     public void salvar (@RequestBody Pessoa pessoa) {
-        if (pessoa.getId() > 0) {
-            repositorio.save(pessoa);
-        }
+        repositorio.save(pessoa);
     }
 
     @PutMapping
